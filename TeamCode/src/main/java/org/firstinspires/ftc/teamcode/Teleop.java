@@ -22,12 +22,6 @@ public class Teleop extends LinearOpMode {
             // Preset Positions
 
 
-
-
-
-
-
-
             // Run the PID every loop
             arm.RunMotor();
 
@@ -38,3 +32,4 @@ public class Teleop extends LinearOpMode {
             telemetry.update();
         }
     }
+    //i hate github
