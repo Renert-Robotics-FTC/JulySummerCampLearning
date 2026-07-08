@@ -38,5 +38,3 @@ public class Teleop extends LinearOpMode {
             telemetry.update();
         }
     }
-}
-//hi im beside ethan
