@@ -9,13 +9,14 @@ public class Teleop extends LinearOpMode {
     public void runOpMode() {
 
         ClawSubsystem claw = new ClawSubsystem(hardwareMap);
-
+        DriveSubsystem drive = new DriveSubsystem(hardwareMap);
         telemetry.addLine("Ready!");
         telemetry.update();
 
         waitForStart();
 
         while (opModeIsActive()) {
+            DriveSubsystem Drive;
 
 
             ClawSubsystem Claw;
@@ -23,6 +24,10 @@ public class Teleop extends LinearOpMode {
                 claw.closeClaw();
             } else {
                 claw.openClaw();
+
+            }
+            drive.updateInputs(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
+
             }
 
 
@@ -30,4 +35,3 @@ public class Teleop extends LinearOpMode {
             telemetry.update();
         }
     }
-}
