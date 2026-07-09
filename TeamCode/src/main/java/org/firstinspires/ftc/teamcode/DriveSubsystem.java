@@ -15,10 +15,10 @@ public class DriveSubsystem {
 
     //Constructor
     public DriveSubsystem(HardwareMap hardwareMap) {
-        frontLeft=hardwareMap.get(DcMotorEx.class,"frontLeft");
-        frontRight=hardwareMap.get(DcMotorEx.class, "frontRight");
-        backLeft=hardwareMap.get(DcMotorEx.class, "backLeft");
-        backRight=hardwareMap.get(DcMotorEx.class, "backRight");
+        frontLeft = hardwareMap.get(DcMotorEx.class, "frontLeft");
+        frontRight = hardwareMap.get(DcMotorEx.class, "frontRight");
+        backLeft = hardwareMap.get(DcMotorEx.class, "backLeft");
+        backRight = hardwareMap.get(DcMotorEx.class, "backRight");
 
         // Motor Directions spinny spinny yay
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -29,12 +29,38 @@ public class DriveSubsystem {
         frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    }
 
+        //Driving Method vrm vrm
+        public void drive(double x, double y, double turn){
+        double frontLeftPower=y+x+turn;
+        double frontRightPower=y-x-turn;
+        double backLeftPower=y-x+turn;
+        double backRightPower=y+x-turn;
+
+        double max=Math.max(1.0,Math.max(
+
+        Math.abs(frontLeftPower),
+                Math.max(
+                        Math.abs(frontRightPower),
+                        Math.max(Math.abs(backLeftPower),Math.abs(backRightPower))
+                )
+        ));
+
+        frontLeft.setPower(frontLeftPower/max);
+        frontRight.setPower(frontRightPower);
+        backLeft.setPower(backLeftPower);
+        backRight.setPower(backRightPower);
+
+
+
+
+        }
 
 
 
     }
 
-}
+
 
 
