@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 
 public class DriveSubsystem {
-//Motors vrm vrm
+    //Motors vrm vrm
     DcMotorEx frontLeft;
     DcMotorEx frontRight;
     DcMotorEx backLeft;
@@ -31,35 +31,45 @@ public class DriveSubsystem {
         backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
-        //Driving Method vrm vrm
-        public void drive(double x, double y, double turn){
-        double frontLeftPower=y+x+turn;
-        double frontRightPower=y-x-turn;
-        double backLeftPower=y-x+turn;
-        double backRightPower=y+x-turn;
+    //Driving Method vrm vrm
+    public void drive(double x, double y, double turn) {
+        double frontLeftPower = y + x + turn;
+        double frontRightPower = y - x - turn;
+        double backLeftPower = y - x + turn;
+        double backRightPower = y + x - turn;
 
-        double max=Math.max(1.0,Math.max(
+        double max = Math.max(1.0, Math.max(
 
-        Math.abs(frontLeftPower),
+                Math.abs(frontLeftPower),
                 Math.max(
                         Math.abs(frontRightPower),
-                        Math.max(Math.abs(backLeftPower),Math.abs(backRightPower))
+                        Math.max(Math.abs(backLeftPower), Math.abs(backRightPower))
                 )
         ));
 
-        frontLeft.setPower(frontLeftPower/max);
-        frontRight.setPower(frontRightPower);
-        backLeft.setPower(backLeftPower);
-        backRight.setPower(backRightPower);
-
-
-
-
-        }
-
-
-
+        frontLeft.setPower(frontLeftPower / max);
+        frontRight.setPower(frontRightPower / max);
+        backLeft.setPower(backLeftPower / max);
+        backRight.setPower(backRightPower / max);
     }
+
+    //more method but finished pushing
+    public void stop() {
+        frontLeft.setPower(0);
+        frontRight.setPower(0);
+        backLeft.setPower(0);
+        backRight.setPower(0);
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 
