@@ -8,27 +8,27 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 public class DriveSubsystem {
     //Motors vrm vrm
-    DcMotorEx frontLeft;
-    DcMotorEx frontRight;
-    DcMotorEx backLeft;
-    DcMotorEx backRight;
+    DcMotorEx FL;
+    DcMotorEx FR;
+    DcMotorEx BL;
+    DcMotorEx BR;
 
     //Constructor
     public DriveSubsystem(HardwareMap hardwareMap) {
-        frontLeft = hardwareMap.get(DcMotorEx.class, "frontLeft");
-        frontRight = hardwareMap.get(DcMotorEx.class, "frontRight");
-        backLeft = hardwareMap.get(DcMotorEx.class, "backLeft");
-        backRight = hardwareMap.get(DcMotorEx.class, "backRight");
+        FL = hardwareMap.get(DcMotorEx.class, "frontLeft");
+        FR = hardwareMap.get(DcMotorEx.class, "frontRight");
+        BL = hardwareMap.get(DcMotorEx.class, "backLeft");
+        BR = hardwareMap.get(DcMotorEx.class, "backRight");
 
         // Motor Directions spinny spinny yay
-        frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        FL.setDirection(DcMotorSimple.Direction.REVERSE);
+        BL.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //Motor Breaks skdd
-        frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        FR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        BL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        BR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     //Driving Method vrm vrm
@@ -47,18 +47,18 @@ public class DriveSubsystem {
                 )
         ));
 
-        frontLeft.setPower(frontLeftPower / max);
-        frontRight.setPower(frontRightPower / max);
-        backLeft.setPower(backLeftPower / max);
-        backRight.setPower(backRightPower / max);
+        FL.setPower(frontLeftPower / max);
+        FR.setPower(frontRightPower / max);
+        BL.setPower(backLeftPower / max);
+        BR.setPower(backRightPower / max);
     }
 
     //more method but finished pushing
     public void stop() {
-        frontLeft.setPower(0);
-        frontRight.setPower(0);
-        backLeft.setPower(0);
-        backRight.setPower(0);
+        FL.setPower(0);
+        FR.setPower(0);
+        BL.setPower(0);
+        BR.setPower(0);
     }
 }
 
