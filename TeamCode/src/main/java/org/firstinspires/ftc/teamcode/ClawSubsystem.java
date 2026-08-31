@@ -7,7 +7,8 @@ public class ClawSubsystem {
 
     private Servo claw;
 
-    // Change these values after testing
+    // Change these values after testing, they determine the position of the claw
+    // Find the values in which the claw is fully open and fully closed
     private static final double OPEN = 0.8;
     private static final double CLOSED = 0.2;
 

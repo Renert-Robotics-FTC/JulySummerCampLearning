@@ -37,7 +37,7 @@ public class Teleop extends LinearOpMode {
             );
 
 
-            // Preset Positions
+            // Preset Positions, change these numbers to determine where the arm settings go
             if (gamepad1.a) {
                 Armsubsystem.setTargetPosition(0);
             }
