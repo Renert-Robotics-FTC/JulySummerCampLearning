@@ -25,6 +25,9 @@ public class Teleop extends LinearOpMode {
 
         while (opModeIsActive()) {
 
+            //How to drive
+            //Use left-stick for strafe and forwards
+            //Right-stick determines turning
             double forward = -gamepad1.left_stick_y;
             double strafe = gamepad1.left_stick_x;
             double turn = gamepad1.right_stick_x;
@@ -38,6 +41,7 @@ public class Teleop extends LinearOpMode {
 
 
             // Preset Positions, change these numbers to determine where the arm settings go
+            // You only get 3 settings. You can add more if you would like but not recommended
             if (gamepad1.a) {
                 Armsubsystem.setTargetPosition(0);
             }
@@ -50,6 +54,8 @@ public class Teleop extends LinearOpMode {
                 Armsubsystem.setTargetPosition(1000);
             }
 
+            // The left bumper controls the claw and this servo has 2 positions set
+            //Check ClawSubsystem to change numerical values
             if (gamepad1.left_bumper && !lastLB) {
 
                 clawOpen = !clawOpen;
@@ -65,7 +71,7 @@ public class Teleop extends LinearOpMode {
 
             // Run the PID every loop
 
-            // Telemetry
+            // Telemetry is constantly updating every time this part of the code runs in repeat
 
             Armsubsystem.update();
 

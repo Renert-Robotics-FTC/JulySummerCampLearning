@@ -14,6 +14,7 @@ public class ArmSubsystem {
         arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
+        //PID settings
         armPID = new PIDController(
                 0.01,
                 0,
@@ -29,6 +30,7 @@ public class ArmSubsystem {
         arm.setPower(0);
     }
 
+    //This starts the PID aspect of the ArmSubsystem.
     public class PIDController {
 
         private double kP;
@@ -39,6 +41,7 @@ public class ArmSubsystem {
         private double lastError = 0;
         private long lastTime = System.nanoTime();
 
+        //Setting variable values for PID
         public PIDController(double p, double i, double d) {
             kP = p;
             kI = i;
@@ -53,6 +56,7 @@ public class ArmSubsystem {
             double dt = (currentTime - lastTime) / 1e9;
             lastTime = currentTime;
 
+            //Just a definition
             integral += error * dt;
 
             double derivative = 0;
@@ -78,6 +82,8 @@ public class ArmSubsystem {
 
     PIDController armPID;
 
+    //This targetPosition sets what the arm starts at when the code is first run
+    //Changeable depending on preferred setup
     int targetPosition = 500;
 
     public void update() {
@@ -90,6 +96,7 @@ public class ArmSubsystem {
         arm.setPower(power);
     }
 
+    //The constant collection of information
     public int getCurrentPosition() {
         return arm.getCurrentPosition();
     }
