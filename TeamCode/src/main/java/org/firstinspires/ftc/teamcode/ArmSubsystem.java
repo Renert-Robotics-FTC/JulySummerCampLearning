@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import androidx.annotation.NonNull;
-
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -20,14 +18,6 @@ public class ArmSubsystem {
                 0,
                 0.0005
         );
-    }
-
-    public void RunMotor() {
-        arm.setPower(1);
-    }
-
-    public void StopMotor() {
-        arm.setPower(0);
     }
 
     //This starts the PID aspect of the ArmSubsystem.
@@ -71,11 +61,6 @@ public class ArmSubsystem {
                     + (kD * derivative);
         }
 
-        public void reset() {
-            integral = 0;
-            lastError = 0;
-            lastTime = System.nanoTime();
-        }
     }
 
     private DcMotor arm;
