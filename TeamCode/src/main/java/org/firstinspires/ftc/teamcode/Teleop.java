@@ -25,13 +25,14 @@ public class Teleop extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            //How to drive
+            //How to drive:
             //Use left-stick for strafe and forwards
             //Right-stick determines turning
             double forward = -gamepad1.left_stick_y;
             double strafe = gamepad1.left_stick_x;
             double turn = gamepad1.right_stick_x;
 
+            //Over here is the slowMode where you hold x to turn on slowMode
             driveSubsystem.drive(
                     forward,
                     strafe,
