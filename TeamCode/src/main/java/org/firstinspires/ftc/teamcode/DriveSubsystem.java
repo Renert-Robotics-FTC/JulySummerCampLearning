@@ -22,13 +22,14 @@ public class DriveSubsystem {
         BL.setDirection(DcMotor.Direction.REVERSE);
     }
 
-//This sets how the robot is moving, it has a strafe set.
-//This is in your best interest to understand how the mechanum wheels work with the strafe
+    //This sets how the robot is moving, it has a strafe set.
+    //This is in your best interest to understand how the mechanum wheels work with the strafe
     //This public void drive gives the drive variables used later
     public void drive(double forward, double strafe, double turn, boolean slowMode) {
 
         //This slowMode puts the robot in 1/4 speed ratio
-        //If you hold some button it turns on the slowMode. idk which one though you'll have to see.
+        //If you hold some button it turns on the slowMode.
+        //I forgot which one though.
         double speed = slowMode ? 0.25 : 1.0;
 
         double flPower = (forward + strafe + turn) * speed;
